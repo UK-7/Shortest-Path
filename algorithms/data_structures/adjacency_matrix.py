@@ -13,7 +13,7 @@ def print_nice(m):
         print()
     print()
 
-def build_random_graph(m):
+def build_random_graph(m,low_weight=1,high_weight=20,p_edge=.6):
     #TODO(jg): it is possible to implement a graph which is impossible to find a shortest path.
     #NOTE(jg): I think that I have mitigated this bug.
     matrix = []
@@ -23,7 +23,7 @@ def build_random_graph(m):
         
         lonely = True
         while lonely:
-            row = [randint(1,20) if uniform(0,1)<.6 else MAX_INT for x in range(m)]
+            row = [randint(low_weight,high_weight) if uniform(0,1)<p_edge else MAX_INT for x in range(m)]
             row[i] = 0
             
             #we need to check to make sure that a node is lonely
