@@ -1,0 +1,45 @@
+from __future__ import print_function,division
+from random import uniform, randint
+MAX_INT = 10000
+
+def print_nice(m):
+    print()
+    for i in m:
+        for j in i:
+            if len(str(j)) > 1:
+                print(j,end='  ')
+            else:
+                print(j,end='   ')
+        print()
+    print()
+
+def build_random_graph(m):
+    #TODO(jg): it is possible to implement a graph which is impossible to find a shortest path.
+    #NOTE(jg): I think that I have mitigated this bug.
+    matrix = []
+    for i in range(m):
+        #give each node a 60 percent chance of having a connection with another node
+        #and then give it a random weight from 1 to 20
+        
+        lonely = True
+        while lonely:
+            row = [randint(1,20) if uniform(0,1)<.6 else MAX_INT for x in range(m)]
+            row[i] = 0
+            
+            #we need to check to make sure that a node is lonely
+            #this makes sure that every node has at leasat one connection with another node
+            for val in row:
+                if val != 0 and val != MAX_INT:
+                    lonely = False
+                    break
+            if lonely:
+                print('lonely')
+        matrix.append(row)
+    return matrix
+
+
+if __name__ == '__main__':
+    graph = build_random_graph(10**3)
+    #print_nice(graph)
+    dijkstra(graph,15)
+    dijkstra_heap(graph,15)
