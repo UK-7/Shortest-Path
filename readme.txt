@@ -12,11 +12,12 @@ Implemented:
 	
 	Algorithms: 
 	- Dijkstra (list and heap)
+	- Bellman Ford (most naive)
 
 To Implement:
 	Algorithms:
 	- Dijkstra (fibonocci heap)
-	- Bellman-Ford
+	- Bellman-Ford (not naive?)
 	- A*
 	- Floyd-Marshal
 	- Johnson
@@ -28,7 +29,7 @@ Work Distribution:
  - TBA
 
 Jason Currently working on:
-- Dijkstra(fibonocci heap) / Bellman-Ford
+- Dijkstra(fibonocci heap)
 
 Utkarsh currently working on:
 - Learning python :)
