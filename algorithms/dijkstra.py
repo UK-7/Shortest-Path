@@ -8,9 +8,9 @@ MAX_INT = 10000
 def dijkstra(graph,source):
     n_nodes = len(graph)
 
-    Q = [True for i in range(n_nodes)]
-    dist = [MAX_INT for i in range(n_nodes)] #distance from source to v
-    prev = [None for i in range(n_nodes)] #previous node in optimal path
+    Q = [True] * n_nodes
+    dist = [MAX_INT] * n_nodes  #distance from source to v
+    prev = [None] * n_nodes #previous node in optimal path
 
     dist[source] = 0
 
@@ -38,9 +38,9 @@ def dijkstra(graph,source):
 @do_profile()
 def dijkstra_heap(graph,source):
     n_nodes = len(graph)
-    Q = [True for i in range(n_nodes)]
-    dist = [MAX_INT for i in range(n_nodes)] #distance from source to v
-    prev = [None for i in range(n_nodes)] #previous node in optimal path
+    Q = [True] * n_nodes
+    dist = [MAX_INT] * n_nodes  #distance from source to v
+    prev = [None] * n_nodes #previous node in optimal path
     dist[source] = 0
     S = Heap()
 
