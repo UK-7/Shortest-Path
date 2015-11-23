@@ -28,8 +28,10 @@ Work Distribution:
  - TBA
 
 Jason Currently working on:
+- Dijkstra(fibonocci heap) / Bellman-Ford
 
 Utkarsh currently working on:
+- Learning python :)
 
 
 
