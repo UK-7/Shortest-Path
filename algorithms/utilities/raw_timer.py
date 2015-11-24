@@ -1,5 +1,5 @@
 import time
-
+import numpy as np
 def run_timer():
     #arrays to old average run time and run time standard dev
     std = []
