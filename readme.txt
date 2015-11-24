@@ -29,7 +29,8 @@ Work Distribution:
  - TBA
 
 Jason Currently working on:
-- Dijkstra(fibonocci heap)
+- Dijkstra(fibonocci heap) -- this is going to be hard I think...
+- Plotting library
 
 Utkarsh currently working on:
 - Learning python :)
