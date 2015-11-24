@@ -2,7 +2,7 @@ from utilities.profiler import do_profile
 
 MAX_INT = 10000
 
-@do_profile()
+#@do_profile()
 def bellman_ford_naive(graph,source):
     ##initialize arrays as before
     size = len(graph)

@@ -1,9 +1,17 @@
+
 from __future__ import print_function,division
 from algorithms.data_structures.adjacency_matrix import build_random_graph, print_nice
 
 from algorithms.dijkstra import dijkstra_heap
 from algorithms.bellman_ford import bellman_ford_naive
 
+from algorithms.utilities.plotting import graph_size_test
+
+graph_size_test([dijkstra_heap, bellman_ford_naive],10,50,100)
+
+
+
+'''
 #dijkstra tests
 graph = build_random_graph(20)
 print(dijkstra_heap(graph,10))
@@ -25,3 +33,4 @@ sol_2 = bellman_ford_naive(graph,10)
 print(sol_1)
 print(sol_2)
 assert(sol_1 == sol_2)
+'''

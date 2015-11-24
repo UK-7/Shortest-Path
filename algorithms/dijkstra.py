@@ -35,7 +35,7 @@ def dijkstra(graph,source):
                     prev[v] = u
     return (dist,prev)
 
-@do_profile()
+#@do_profile()
 def dijkstra_heap(graph,source):
     n_nodes = len(graph)
     Q = [True] * n_nodes
