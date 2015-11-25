@@ -13,6 +13,7 @@ Implemented:
 	Algorithms: 
 	- Dijkstra (list and heap)
 	- Bellman Ford (most naive)
+	- Plotting Libraries
 
 To Implement:
 	Algorithms:
@@ -23,14 +24,13 @@ To Implement:
 	- Johnson
 	
 	Utilities:
-	- Plotting Libraries
 	- Lots of Test Cases
 Work Distribution:
  - TBA
 
 Jason Currently working on:
 - Dijkstra(fibonocci heap) -- this is going to be hard I think...
-- Plotting library
+
 
 Utkarsh currently working on:
 - Learning python :)
@@ -41,5 +41,5 @@ Utkarsh currently working on:
 Required packages: 
 - numpy
 - line_profiler
-
+- matplotlb
  

@@ -5,7 +5,7 @@ from utilities.profiler import do_profile
 
 MAX_INT = 10000
 
-def dijkstra(graph,source):
+def dijkstra_naive(graph,source):
     n_nodes = len(graph)
 
     Q = [True] * n_nodes
