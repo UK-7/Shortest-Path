@@ -1,9 +1,8 @@
-"""Fibonacci Heap
-
-   Fibonacci heaps are especially desirable when the number of
-   extract_min() and delete() operations is small relative to the
-   number of other operations performed.
-"""
+'''
+THIS IS NOT MY CODE! THIS CODE WAS BORROWED FROM THE INTERNET. I DO NOT DESERVE CREDIT FOR WRITING THIS.
+The code was found here: https://cs.anu.edu.au/people/Alistair.Rendell/Teaching/apac_comp3600/module0/code/fibonacci_heap.py
+In order to use this guys code however, I had to write a wrapper. Please see the wrapper script for more info.
+'''
 def torange(a, b, step=1):
     return xrange(a, b+1, step)
 
@@ -237,53 +236,6 @@ def iterate_heap(s):
 
 def show_heap(H):
     print_heap(H.min, 'o', '->')
-
-def test():
-    #data = [31,40,50,37,45,60,65,73,23,76]
-    #data = [10,20,30,40,50,60,70,80,90]
-    data = [(30,0),(10,1),(90,2),(80,3),(60,4),(70,5),(20,6),(50,7),(40,8)]
-    #data = [3,3,2,1,8,3,7]
-
-    print "Input data:", data
-
-    ############################################################
-    print """
-    We print out the state of the heap as each data item is wrapped in
-    a node and inserted into the heap.  Depth of the tree is indicated
-    by the indentation.  The first number is the key, and the number
-    in square brackets the degree of the node.
-    """
-
-    min = None
-    max = None
-    nodes = []
-    H = make_heap()
-    for d in data:
-        n = make_node(d)
-        if min == None or n.key < min.key:
-            min = n
-        if max == None or n.key > max.key:
-            max = n
-        nodes.append(n)
-        insert(H, n)
-        print_heap(H.min, 'o', '->')
-
-    print_heap(H.min, 'before o', '->')
-    
-
-    #note(jg): what I have added
-    z = iterate_heap(H.min)
-    print([x.key for x in z])
-
-
-    decrease_key(H, max, (10,2))
-    print
-    print_heap(H.min, 'after  o', '->')
-
-    ############################################################
-    factor = 2
-    repetitions = 10
-
 
 ######################################################################
 ######################################################################
