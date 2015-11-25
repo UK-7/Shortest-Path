@@ -30,10 +30,6 @@ def build_random_graph(m,low_weight=1,high_weight=20,p_edge=.6,stress = False):
         if stress:
             #progress tracker - to be removed
             print(str(i)+'\r',end = '')
-
-
-
-    print('\n\n\n')
     return matrix
 
 

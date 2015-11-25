@@ -1,7 +1,7 @@
 from __future__ import print_function,division
 
 from algorithms.data_structures.adjacency_matrix import build_random_graph, print_nice
-from algorithms.dijkstra import dijkstra_heap, dijkstra_naive
+from algorithms.dijkstra import dijkstra_heap, dijkstra_naive, dijkstra_fib
 from algorithms.bellman_ford import bellman_ford_naive
 from algorithms.utilities.plotting import build_size_data,build_connectivity_data,basic_plot
 
@@ -9,11 +9,16 @@ import time
 
 
 
+### Testing Fibonocci Implementation ###
+
+graph = build_random_graph(20)
+print(dijkstra_heap(graph,10))
+print(dijkstra_fib(graph,10l))
+
+'''
 ##############################################################
 ############How many nodes does it toake to break#############
 ##############################################################
-
-
 start = time.time()
 g = build_random_graph(10000, stress = True)
 dijkstra_heap(g, 0, stress = True)
@@ -21,8 +26,6 @@ dijkstra_heap(g, 0, stress = True)
 print('Run Time for 10,000 nodes')
 print(time.time()-start)
 
-
-'''
 ####################################
 ############Basic Tests#############
 ####################################
