@@ -5,6 +5,7 @@ from utilities.profiler import do_profile
 
 MAX_INT = 10000
 
+@do_profile()
 def dijkstra_naive(graph,source):
     n_nodes = len(graph)
 
@@ -36,7 +37,7 @@ def dijkstra_naive(graph,source):
     return (dist,prev)
 
 #@do_profile()
-def dijkstra_heap(graph,source):
+def dijkstra_heap(graph,source,stress = False):
     n_nodes = len(graph)
     Q = [True] * n_nodes
     dist = [MAX_INT] * n_nodes  #distance from source to v
@@ -63,6 +64,9 @@ def dijkstra_heap(graph,source):
                     dist[v] = alt
                     prev[v] = u
                     S.decrease_priority(v,alt)
+        if stress:
+            #progress tracker - to be removed
+            print(str(S.size)+'\r',end = '')
     return (dist,prev)
 
 if __name__ == '__main__':

@@ -1,13 +1,28 @@
-
 from __future__ import print_function,division
-from algorithms.data_structures.adjacency_matrix import build_random_graph, print_nice
 
+from algorithms.data_structures.adjacency_matrix import build_random_graph, print_nice
 from algorithms.dijkstra import dijkstra_heap, dijkstra_naive
 from algorithms.bellman_ford import bellman_ford_naive
-
 from algorithms.utilities.plotting import build_size_data,build_connectivity_data,basic_plot
 
+import time
 
+
+
+##############################################################
+############How many nodes does it toake to break#############
+##############################################################
+
+
+start = time.time()
+g = build_random_graph(10000, stress = True)
+dijkstra_heap(g, 0, stress = True)
+
+print('Run Time for 10,000 nodes')
+print(time.time()-start)
+
+
+'''
 ####################################
 ############Basic Tests#############
 ####################################
@@ -48,7 +63,7 @@ algorithm_names = ['bellman ford','dijkstra naive','dijkstra heap']
 
 basic_plot(algorithm_names,size_data, title = 'Run Time vs. Graph Size', x_axis = 'graph size')
 basic_plot(algorithm_names,connectivity_data, title = 'Run Time vs. Connectivity', x_axis = 'p connected')
-
+'''
 
 
 

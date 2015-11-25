@@ -13,28 +13,27 @@ def print_nice(m):
         print()
     print()
 
-def build_random_graph(m,low_weight=1,high_weight=20,p_edge=.6):
+def build_random_graph(m,low_weight=1,high_weight=20,p_edge=.6,stress = False):
     #TODO(jg): it is possible to implement a graph which is impossible to find a shortest path.
     #NOTE(jg): I think that I have mitigated this bug.
     matrix = []
     for i in range(m):
         #give each node a 60 percent chance of having a connection with another node
         #and then give it a random weight from 1 to 20
-        
-        lonely = True
-        while lonely:
-            row = [randint(low_weight,high_weight) if uniform(0,1)<p_edge else MAX_INT for x in range(m)]
-            row[i] = 0
-            
-            #we need to check to make sure that a node is lonely
-            #this makes sure that every node has at leasat one connection with another node
-            for val in row:
-                if val != 0 and val != MAX_INT:
-                    lonely = False
-                    break
-            if lonely:
-                print('lonely')
+        row = [randint(low_weight,high_weight) if uniform(0,1)<p_edge else MAX_INT for x in range(m)]
+        row[i] = 0
+        #we need to check to make sure that a node is lonely
+        #this makes sure that every node has at leasat one connection with another node
         matrix.append(row)
+
+
+        if stress:
+            #progress tracker - to be removed
+            print(str(i)+'\r',end = '')
+
+
+
+    print('\n\n\n')
     return matrix
 
 
@@ -43,3 +42,6 @@ if __name__ == '__main__':
     #print_nice(graph)
     dijkstra(graph,15)
     dijkstra_heap(graph,15)
+
+
+
