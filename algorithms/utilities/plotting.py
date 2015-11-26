@@ -1,3 +1,4 @@
+from __future__ import print_function 
 import time
 import numpy as np
 from algorithms.data_structures.adjacency_matrix import build_random_graph
@@ -13,6 +14,7 @@ def build_size_data(functions, min_size, max_size,num_iter):
         iters = [ [] for i in range(len(functions)) ]
         graph = build_random_graph(size,p_edge = .8)
         y.append(size)
+        print(str(size))
         for j in range(num_iter): 
             for idx,function in enumerate(functions):
                 start = time.time()

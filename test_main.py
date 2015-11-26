@@ -7,6 +7,25 @@ from algorithms.utilities.plotting import build_size_data,build_connectivity_dat
 
 import time
 
+graph = build_random_graph(2000)
+test_1 = dijkstra_naive(graph,10)
+test_2 = dijkstra_fib(graph,10)
+test_3 = dijkstra_heap(graph,10)
+
+'''
+#############################
+#######Build Plots###########
+#############################
+size_data = build_size_data(functions = [dijkstra_naive,dijkstra_heap,dijkstra_fib],
+						min_size = 400,max_size = 410, num_iter = 10)
+
+connectivity_data = build_connectivity_data(functions = [dijkstra_naive,dijkstra_heap,dijkstra_fib],
+						size = 50, min_p = 0.2, max_p = 1.0, step_p = .1, num_iter = 50)
+
+algorithm_names = ['dijkstra naive','dijkstra heap','dijkstra fib']
+
+basic_plot(algorithm_names,size_data, title = 'Run Time vs. Graph Size', x_axis = 'graph size')
+basic_plot(algorithm_names,connectivity_data, title = 'Run Time vs. Connectivity', x_axis = 'p connected')
 
 
 ### Testing Fibonocci Implementation ###
@@ -20,7 +39,7 @@ for i in range(10000):
         print(test_2)
 
 # they agree on ten thousand solutions
-'''
+
 ##############################################################
 ############How many nodes does it toake to break#############
 ##############################################################
@@ -57,20 +76,6 @@ print(sol_1)
 print(sol_2)
 assert(sol_1 == sol_2)
 
-
-#############################
-#######Build Plots###########
-#############################
-size_data = build_size_data(functions = [bellman_ford_naive,dijkstra_naive,dijkstra_heap],
-						min_size = 10,max_size = 50, num_iter = 100)
-
-connectivity_data = build_connectivity_data(functions = [bellman_ford_naive,dijkstra_naive,dijkstra_heap],
-						size = 50, min_p = 0.4, max_p = 1.0, step_p = .1, num_iter = 50)
-
-algorithm_names = ['bellman ford','dijkstra naive','dijkstra heap']
-
-basic_plot(algorithm_names,size_data, title = 'Run Time vs. Graph Size', x_axis = 'graph size')
-basic_plot(algorithm_names,connectivity_data, title = 'Run Time vs. Connectivity', x_axis = 'p connected')
 '''
 
 

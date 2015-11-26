@@ -8,6 +8,7 @@ from utilities.profiler import do_profile
 MAX_INT = 10000
 
 
+@do_profile()
 def dijkstra_naive(graph,source):
     n_nodes = len(graph)
 
@@ -37,7 +38,7 @@ def dijkstra_naive(graph,source):
                     dist[v] = alt
                     prev[v] = u
     return (dist,prev)
-
+@do_profile()
 def dijkstra_fib(graph,source,stress = False):
     n_nodes = len(graph)
     Q = [True] * n_nodes
@@ -56,6 +57,9 @@ def dijkstra_fib(graph,source,stress = False):
         dist_u, u = H.pop().key
         Q[u] = False
         weights = graph[u]
+        
+        
+        # TODO(jkg): get_nodes is SUPER slow. need to fix
         for heap_node in H.get_nodes():
             v = heap_node.key[1]
             edge = weights[v]
@@ -71,6 +75,7 @@ def dijkstra_fib(graph,source,stress = False):
             print(str(S.size)+'\r',end = '')
     return (dist,prev)
 
+@do_profile()
 def dijkstra_heap(graph,source,stress = False):
     n_nodes = len(graph)
     Q = [True] * n_nodes
