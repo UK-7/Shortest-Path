@@ -39,7 +39,6 @@ def dijkstra_naive(graph,source):
     return (dist,prev)
 
 def dijkstra_fib(graph,source,stress = False):
-    ##TODO(jkg): still not really working. getting a weird bug with list index out of range
     n_nodes = len(graph)
     Q = [True] * n_nodes
     dist = [MAX_INT] * n_nodes  #distance from source to v
@@ -52,18 +51,21 @@ def dijkstra_fib(graph,source,stress = False):
         H.add((distance,node))
 
     while H.heap.n != 0:
+        #print(H.heap.n)
+        
         dist_u, u = H.pop().key
         Q[u] = False
         weights = graph[u]
-        for v,edge in enumerate(weights):
-            if edge != MAX_INT and Q[v]: #v is in Q and is neighbor
-                #we need some way of relating this to the heap
-                
+        for heap_node in H.get_nodes():
+            v = heap_node.key[1]
+            edge = weights[v]
+            if edge != MAX_INT: #v is in Q and is neighbor
+                #we need some way of relating this to the heap 
                 alt = dist_u + edge #alternative path
                 if alt < dist[v]: #alternative path is better
                     dist[v] = alt
                     prev[v] = u
-                    H.adjust_node(v,alt)
+                    H.adjust_node(heap_node,alt)
         if stress:
             #progress tracker - to be removed
             print(str(S.size)+'\r',end = '')
@@ -88,6 +90,11 @@ def dijkstra_heap(graph,source,stress = False):
         weights = graph[u]
         
         for v,edge in enumerate(weights):
+            
+            # can I find a way to relate this to the decrease priority?
+            # yes. we need to iterate the heap itself and not the weight array
+
+            
             if edge != MAX_INT and Q[v]: #v is in Q and is neighbor
                 #we need some way of relating this to the heap
                 

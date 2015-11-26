@@ -10,11 +10,16 @@ import time
 
 
 ### Testing Fibonocci Implementation ###
+for i in range(10000):
+    graph = build_random_graph(20)
+    test_1 = dijkstra_naive(graph,10)
+    test_2 = dijkstra_fib(graph,10)
+    test_3 = dijkstra_heap(graph,10)
+    if test_1 != test_2:
+        print(test_1)
+        print(test_2)
 
-graph = build_random_graph(20)
-print(dijkstra_heap(graph,10))
-print(dijkstra_fib(graph,10l))
-
+# they agree on ten thousand solutions
 '''
 ##############################################################
 ############How many nodes does it toake to break#############

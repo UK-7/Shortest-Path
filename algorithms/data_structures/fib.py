@@ -4,7 +4,7 @@ The code was found here: https://cs.anu.edu.au/people/Alistair.Rendell/Teaching/
 In order to use this guys code however, I had to write a wrapper. Please see the wrapper script for more info.
 '''
 def torange(a, b, step=1):
-    return xrange(a, b+1, step)
+    return xrange(a, b+2, step)
 
 class FibonacciHeap:
     def __init__(self):
