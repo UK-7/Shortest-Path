@@ -18,8 +18,6 @@ Implemented:
 
 To Implement:
 	Algorithms:
-	- Dijkstra (fibonocci heap)
-	- Bellman-Ford (not naive?)
 	- A*
 	- Floyd-Marshal
 	- Johnson
