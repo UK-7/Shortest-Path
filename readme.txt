@@ -5,7 +5,8 @@ Written in Python 2.7
 Implemented:
 	Utilities:
 	- Basic Timing Functions
-
+	- Plotting Libraries
+	
 	Data Structures:
 	- Generation of Random Adjacency Matrix
 	- Heap
@@ -13,7 +14,7 @@ Implemented:
 	Algorithms: 
 	- Dijkstra (list and heap)
 	- Bellman Ford (most naive)
-	- Plotting Libraries
+	- Bellman Ford (less naive - only look at relaxed nodes)
 
 To Implement:
 	Algorithms:
@@ -25,12 +26,12 @@ To Implement:
 	
 	Utilities:
 	- Lots of Test Cases
+
 Work Distribution:
  - TBA
 
 Jason Currently working on:
-- Improving dijkstra (right now it is slower than the standard implementation)
-- non-naive bellman-ford
+- Improving heap dijkstra (right now it is slower than the standard implementation)
 
 
 Utkarsh currently working on:
