@@ -12,10 +12,10 @@ def build_size_data(functions, min_size, max_size,num_iter):
     y = []
     for size in range(min_size, max_size+1):
         iters = [ [] for i in range(len(functions)) ]
-        graph = build_random_graph(size,p_edge = .8)
         y.append(size)
         print(str(size))
         for j in range(num_iter): 
+            graph = build_random_graph(size,p_edge = .8)
             for idx,function in enumerate(functions):
                 start = time.time()
                 function(graph,0)
@@ -37,9 +37,9 @@ def build_connectivity_data(functions, size, min_p, max_p,step_p,num_iter):
     y = []
     for p in all_ps:
         iters = [ [] for i in range(len(functions)) ]
-        graph = build_random_graph(size,p_edge = p)
         y.append(p)
         for j in range(num_iter): 
+            graph = build_random_graph(size,p_edge = p)
             for idx,function in enumerate(functions):
                 start = time.time()
                 z = function(graph,0)

@@ -25,7 +25,6 @@ def bellman_ford_naive(graph,source):
             if min_dist[x] > min_dist[v] + graph[v][x]:
                 print 'negative cycle found'
                 return False
-
     return (min_dist,pred)
 
 def adj_check(G,v):
@@ -34,6 +33,37 @@ def adj_check(G,v):
         if G[v][x] != MAX_INT:
             result.append(x)
     return result
+
+def open_check(iterator):
+    return [i for i,closed in enumerate(iterator) if not closed]
+
+def bellman_ford_less_naive(graph,source):
+    size = len(graph)
+    pred = [None] * size
+    min_dist = [MAX_INT] * size
+    closed = [True] * size
+
+    min_dist[source] = 0
+    closed[source] = False
+
+    for _ in range(size):
+        for v in open_check(closed):
+            # print(v)
+            # print(adj_check(graph,v))
+            for x in adj_check(graph,v):
+                if min_dist[x] > min_dist[v] + graph[v][x]:
+                    # print('smaller')
+                    min_dist[x] = min_dist[v] + graph[v][x]
+                    pred[x] = v
+                    closed[x] = False
+            closed[v] = True
+
+    if sum(closed) != size:
+        return False
+    else:
+        return (min_dist,pred)
+
+    
 
 
 
