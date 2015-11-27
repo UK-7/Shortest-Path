@@ -222,17 +222,16 @@ def print_heap(s, indent='#', char='#'):
         x = x.right
 
 def iterate_heap(s):
-    all_elems = set()
+    all_elems = []
     x = s
     first_iteration = True
     while x != None and (first_iteration or x != s):
         first_iteration = False
-        all_elems.add(x)
+        all_elems = all_elems + [x]
         if x.child != None:
-            all_elems = all_elems | iterate_heap(x.child)
+            all_elems = all_elems + iterate_heap(x.child)
         x = x.right
     return all_elems
-
 
 def show_heap(H):
     print_heap(H.min, 'o', '->')

@@ -29,7 +29,8 @@ Work Distribution:
  - TBA
 
 Jason Currently working on:
-- Dijkstra(fibonocci heap) -- this is going to be hard I think...
+- Improving dijkstra (right now it is slower than the standard implementation)
+- non-naive bellman-ford
 
 
 Utkarsh currently working on:

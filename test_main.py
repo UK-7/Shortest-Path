@@ -7,10 +7,13 @@ from algorithms.utilities.plotting import build_size_data,build_connectivity_dat
 
 import time
 
-graph = build_random_graph(2000)
+graph = build_random_graph(10000)
 test_1 = dijkstra_naive(graph,10)
 test_2 = dijkstra_fib(graph,10)
-test_3 = dijkstra_heap(graph,10)
+#test_3 = dijkstra_heap(graph,10)
+#print(test_1)
+#print(test_2)
+
 
 '''
 #############################
