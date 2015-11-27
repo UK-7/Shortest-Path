@@ -15,44 +15,30 @@ import time
 #print(test_2)
 
 
-for i in range(10,100):
-    print(i)
-    for j in range(50):
-        graph = build_random_graph(i)
-        x = bellman_ford_naive(graph,0)
-        y = bellman_ford_less_naive(graph,0)
-        if not x:
-            if x[0] != y[0]:
-                print(x[0])
-                print(y[0])
-                
-                break
-
-
-
-
-
-'''
 for i in range(6000):
-    graph = build_random_graph(50)
+    graph = build_random_graph(50,low_weight = - 12 ,high_weight = 1000,p_edge =0.4)
     x = bellman_ford_less_naive(graph,10)
     y = bellman_ford_naive(graph,10)
-    if not x:
+    if not y:
         print('negative cycle')
     else:
+        print('pos only')
         if x[0] != y[0]:
             print(x[0])
-            print(y[0])'
+            print(y[0])
+            break
+
+'''
 #############################
 #######Build Plots###########
 #############################
-size_data = build_size_data(functions = [bellman_ford_naive,bellman_ford_less_naive],
-						min_size = 10,max_size = 50, num_iter = 10)
+size_data = build_size_data(functions = [dijkstra_naive,bellman_ford_less_naive],
+						min_size = 10,max_size = 100, num_iter = 2)
 
-connectivity_data = build_connectivity_data(functions = [bellman_ford_naive,bellman_ford_less_naive],
+connectivity_data = build_connectivity_data(functions = [dijkstra_naive,bellman_ford_less_naive],
 						size = 50, min_p = 0.2, max_p = 1.0, step_p = .1, num_iter = 50)
 
-algorithm_names = ['bellman_ford','bellman_less_naive']
+algorithm_names = ['dijkstra naive','bellman_less_naive']
 
 basic_plot(algorithm_names,size_data, title = 'Run Time vs. Graph Size', x_axis = 'graph size')
 basic_plot(algorithm_names,connectivity_data, title = 'Run Time vs. Connectivity', x_axis = 'p connected')
@@ -103,7 +89,6 @@ graph = build_random_graph(25)
 sol_1 = dijkstra_heap(graph,10)
 sol_2 = bellman_ford_naive(graph,10)
 print(sol_1)
-
 '''
 
 
