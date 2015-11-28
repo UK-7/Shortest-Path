@@ -15,11 +15,11 @@ Implemented:
 	- Dijkstra (list and heap)
 	- Bellman Ford (most naive)
 	- Bellman Ford (less naive - only look at relaxed nodes)
+	- Floyd-Warshal (most naive)
 
 To Implement:
 	Algorithms:
 	- A*
-	- Floyd-Marshal
 	- Johnson
 	
 	Utilities:
