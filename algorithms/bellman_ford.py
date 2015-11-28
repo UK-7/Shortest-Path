@@ -24,7 +24,7 @@ def bellman_ford_naive(graph,source):
         for x in adj_check(graph,v):
             if min_dist[x] > min_dist[v] + graph[v][x]:
                 print 'negative cycle found'
-                return False
+                #return False
     return (min_dist,pred)
 
 def adj_check(G,v):

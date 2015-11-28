@@ -7,6 +7,8 @@ from algorithms.utilities.plotting import build_size_data,build_connectivity_dat
 
 import time
 
+
+MAX_INT = 10000
 #graph = build_random_graph(10000)
 #test_1 = dijkstra_naive(graph,10)
 #test_2 = dijkstra_fib(graph,10)
@@ -15,6 +17,22 @@ import time
 #print(test_2)
 
 
+graph_hmwk = [ [0, 5, 3, MAX_INT],
+               [MAX_INT, 0, -3, MAX_INT],
+               [MAX_INT, MAX_INT, 0, 3],
+               [MAX_INT, MAX_INT, MAX_INT, 0] ]
+
+
+test_1 = dijkstra_naive(graph_hmwk,0)
+test_2 = bellman_ford_naive(graph_hmwk,0)
+
+print(test_1)
+print(test_2)
+
+
+
+
+'''
 for i in range(6000):
     graph = build_random_graph(50,low_weight = - 12 ,high_weight = 1000,p_edge =0.4)
     x = bellman_ford_less_naive(graph,10)
@@ -27,7 +45,7 @@ for i in range(6000):
             print(x[0])
             print(y[0])
             break
-
+'''
 '''
 #############################
 #######Build Plots###########
