@@ -17,8 +17,6 @@ def bellman_ford_naive(graph,source):
                 if min_dist[x] > min_dist[v] + graph[v][x]:
                     min_dist[x] = min_dist[v] + graph[v][x]
                     pred[x] = v
-
-
     #are there cycles?
     for v in range(size):
         for x in adj_check(graph,v):

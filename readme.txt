@@ -16,6 +16,7 @@ Implemented:
 	- Bellman Ford (most naive)
 	- Bellman Ford (less naive - only look at relaxed nodes)
 	- Floyd-Warshal (most naive)
+	- Johnsons
 
 To Implement:
 	Algorithms:
@@ -23,13 +24,13 @@ To Implement:
 	
 	Utilities:
 	- Lots of Test Cases
+	- Graphing Library for all-pairs shortest paths
 
 Work Distribution:
  - TBA
 
 Jason Currently working on:
 - Improving heap dijkstra (right now it is slower than the standard implementation)
-- Johnson
 
 Utkarsh currently working on:
 - Learning python :)

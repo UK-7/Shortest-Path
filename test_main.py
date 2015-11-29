@@ -5,18 +5,32 @@ from algorithms.dijkstra import dijkstra_heap, dijkstra_naive, dijkstra_fib,dijk
 from algorithms.bellman_ford import bellman_ford_naive, bellman_ford_less_naive
 from algorithms.utilities.plotting import build_size_data,build_connectivity_data,basic_plot
 from algorithms.floyd_warshall import floyd_warshall_naive
+from algorithms.johnson import johnson
 
 import time
 
 MAX_INT = 10000
 
+no_cycle = False
+while not no_cycle:
+    graph = build_random_graph(10,low_weight = -12, high_weight = 100,p_edge = 0.4)
+    result = johnson(graph)
+    if result != False:
+        no_cycle = True
+        #check if these all find the same solutions repeatadly
+        print(result)
+        print([bellman_ford_less_naive(graph,i)[0] for i in range(10)])
+        print(floyd_warshall_naive(graph))
 
 
+#print([bellman_ford_less_naive(graph,i)[0] for i in range(len(graph))])
 
+
+'''
 graph = build_random_graph(100)
 print(dijkstra_naive(graph,10))
 print(dijkstra_fastest(graph,10))
-
+'''
 '''
 ###############################
 ##Testing floyd-warshal########
@@ -43,14 +57,14 @@ for i in range(6000):
         print('pos only')
         if x[0] != y[0]:
             print(x[0])
-            print(y[0])
+            t(y[0])
             break
 #############################
 #######Build Plots###########
-#############################
+############################
 size_data = build_size_data(functions = [dijkstra_naive,bellman_ford_less_naive],
 						min_size = 10,max_size = 100, num_iter = 2)
-
+i
 connectivity_data = build_connectivity_data(functions = [dijkstra_naive,bellman_ford_less_naive],
 						size = 50, min_p = 0.2, max_p = 1.0, step_p = .1, num_iter = 50)
 

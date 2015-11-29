@@ -5,6 +5,14 @@ from algorithms.data_structures.adjacency_matrix import build_random_graph
 import matplotlib.pyplot as plt
 
 
+
+
+
+
+# TODO(jg): implement plotting libraries for all-pairs shortest path
+
+
+
 def build_size_data(functions, min_size, max_size,num_iter):
     # need to look at time growth over more complex graphs with set connectivity
     # graph = build_random_graph(m,low_weight = 1,high_weight = 20,p_edge = .6)
