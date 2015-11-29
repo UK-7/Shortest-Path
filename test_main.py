@@ -1,7 +1,7 @@
 from __future__ import print_function,division
 
 from algorithms.data_structures.adjacency_matrix import build_random_graph, print_nice
-from algorithms.dijkstra import dijkstra_heap, dijkstra_naive, dijkstra_fib
+from algorithms.dijkstra import dijkstra_heap, dijkstra_naive, dijkstra_fib,dijkstra_fastest
 from algorithms.bellman_ford import bellman_ford_naive, bellman_ford_less_naive
 from algorithms.utilities.plotting import build_size_data,build_connectivity_data,basic_plot
 from algorithms.floyd_warshall import floyd_warshall_naive
@@ -11,6 +11,13 @@ import time
 MAX_INT = 10000
 
 
+
+
+graph = build_random_graph(100)
+print(dijkstra_naive(graph,10))
+print(dijkstra_fastest(graph,10))
+
+'''
 ###############################
 ##Testing floyd-warshal########
 ###############################
@@ -21,7 +28,6 @@ y = [bellman_ford_naive(graph,i)[0] for i in range(10)]
 print(x)
 print(y)
 
-'''
 ###############################
 ##Testing bellman ford alternative on graphs with negative weights
 ###############################

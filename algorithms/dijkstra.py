@@ -38,7 +38,7 @@ def dijkstra_naive(graph,source):
                     dist[v] = alt
                     prev[v] = u
     return (dist,prev)
-@do_profile()
+
 def dijkstra_fib(graph,source,stress = False):
     n_nodes = len(graph)
     Q = [True] * n_nodes
@@ -75,7 +75,6 @@ def dijkstra_fib(graph,source,stress = False):
             print(str(S.size)+'\r',end = '')
     return (dist,prev)
 
-@do_profile()
 def dijkstra_heap(graph,source,stress = False):
     n_nodes = len(graph)
     Q = [True] * n_nodes
@@ -112,6 +111,38 @@ def dijkstra_heap(graph,source,stress = False):
             #progress tracker - to be removed
             print(str(S.size)+'\r',end = '')
     return (dist,prev)
+
+import heapq
+
+def dijkstra_fastest(graph,source):
+    n_nodes = len(graph)
+    node_heap = []
+    
+    Q = [True] * n_nodes
+    dist = [MAX_INT]* n_nodes
+    prev = [None]* n_nodes
+    dist[source] = 0
+    
+    for idx,val in enumerate(dist):
+        heapq.heappush(node_heap,(val,idx))
+
+    while len(node_heap) > 0:
+        dist_u, u = heapq.heappop(node_heap)
+        Q[u] = False
+
+        weights = graph[u]
+
+        for v,edge in enumerate(weights):
+            if edge != MAX_INT and Q[v]:
+                alt = dist_u + edge #alternative path
+                if alt < dist[v]: #alternative path is better
+                    dist[v] = alt
+                    prev[v] = u
+                    node_heap[v] = (alt,v)
+                    heapq.heapify(node_heap)
+
+        return (dist,prev)
+
 
 if __name__ == '__main__':
     graph = build_random_graph(20)

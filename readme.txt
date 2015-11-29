@@ -20,7 +20,6 @@ Implemented:
 To Implement:
 	Algorithms:
 	- A*
-	- Johnson
 	
 	Utilities:
 	- Lots of Test Cases
@@ -30,7 +29,7 @@ Work Distribution:
 
 Jason Currently working on:
 - Improving heap dijkstra (right now it is slower than the standard implementation)
-
+- Johnson
 
 Utkarsh currently working on:
 - Learning python :)
