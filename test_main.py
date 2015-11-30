@@ -10,6 +10,18 @@ from algorithms.johnson import johnson
 import time,copy
 MAX_INT = 10000
 
+#############################
+# Adjacency lists ###########
+##############################
+
+
+
+
+
+'''
+################################
+# Testing Johnson Reweighting###
+###############################
 
 graph = [[0,2,MAX_INT,MAX_INT],
          [MAX_INT,0,-5,MAX_INT],
@@ -17,12 +29,12 @@ graph = [[0,2,MAX_INT,MAX_INT],
          [MAX_INT,5,MAX_INT,0]] #????
 
 
-print(johnson(copy.deepcopy(graph)))
-print('dij')
-print([dijkstra_fib(graph,i)[0] for i in range(4)])
+print(johnson(graph))
+print('dijkstra')
+print([dijkstra_fib(graph,i)[1] for i in range(4)])
 print('bellman')
-print([bellman_ford_less_naive(graph,i)[0] for i in range(4)])
-print([bellman_ford_naive(graph,i)[0] for i in range(4)])
+print([bellman_ford_less_naive(graph,i)[1] for i in range(4)])
+print([bellman_ford_naive(graph,i)[1] for i in range(4)])
 print('floyd') 
 print(floyd_warshall_naive(copy.deepcopy(graph)))
 
@@ -30,7 +42,6 @@ print(floyd_warshall_naive(copy.deepcopy(graph)))
 #print([bellman_ford_less_naive(graph,i)[0] for i in range(len(graph))])
 
 
-'''
 graph = build_random_graph(100)
 print(dijkstra_naive(graph,10))
 print(dijkstra_fastest(graph,10))

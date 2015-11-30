@@ -19,6 +19,7 @@ Implemented:
 	- Johnsons
 
 To Implement:
+	- Algorithms with Adjacency Lists instead of Matricies
 	Algorithms:
 	- A*
 	
