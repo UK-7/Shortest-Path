@@ -31,8 +31,11 @@ def johnson(graph):
         h_v = h_v[0]
     # next the edges of the original graph are reweighted using the values computed
     # weight(u,v) = weight(u,v) +h(u) - h(v)
+    
+    print_nice(graph)
     graph = graph_reweight(graph,h_v)
     graph = remove_node(graph)
+    print_nice(graph)
     sol = [dijkstra_naive(graph,i)[0] for i in range(size)]    
     return sol
     

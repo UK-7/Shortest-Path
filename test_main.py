@@ -11,16 +11,19 @@ import time
 
 MAX_INT = 10000
 
-no_cycle = False
-while not no_cycle:
-    graph = build_random_graph(10,low_weight = -12, high_weight = 100,p_edge = 0.4)
-    result = johnson(graph)
-    if result != False:
-        no_cycle = True
-        #check if these all find the same solutions repeatadly
-        print(result)
-        print([bellman_ford_less_naive(graph,i)[0] for i in range(10)])
-        print(floyd_warshall_naive(graph))
+
+graph = [[0,2,MAX_INT,MAX_INT],
+         [MAX_INT,0,-5,MAX_INT],
+         [4,MAX_INT,0,4],
+         [MAX_INT,5,MAX_INT,0]] #????
+
+print(johnson(graph))
+print('dij')
+print([dijkstra_fib(graph,i)[0] for i in range(4)])
+print('bellman')
+print([bellman_ford_naive(graph,i)[0] for i in range(4)])
+print('floyd') 
+print(floyd_warshall_naive(graph))
 
 
 #print([bellman_ford_less_naive(graph,i)[0] for i in range(len(graph))])

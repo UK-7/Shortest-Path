@@ -17,12 +17,16 @@ def bellman_ford_naive(graph,source):
                 if min_dist[x] > min_dist[v] + graph[v][x]:
                     min_dist[x] = min_dist[v] + graph[v][x]
                     pred[x] = v
+    
     #are there cycles?
+    # TODO(jg): There is a bug here. I don't know how to fix it...
     for v in range(size):
         for x in adj_check(graph,v):
-            if min_dist[x] > min_dist[v] + graph[v][x]:
+            if min_dist[x] < min_dist[v] + graph[v][x]:
+                print((v,x))
                 print 'negative cycle found'
                 #return False
+    
     return (min_dist,pred)
 
 def adj_check(G,v):
