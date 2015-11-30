@@ -22,7 +22,7 @@ def bellman_ford_naive(graph,source):
     # TODO(jg): There is a bug here. I don't know how to fix it...
     for v in range(size):
         for x in adj_check(graph,v):
-            if min_dist[x] < min_dist[v] + graph[v][x]:
+            if min_dist[x] > min_dist[v] + graph[v][x]:
                 print((v,x))
                 print 'negative cycle found'
                 #return False
@@ -44,7 +44,6 @@ def bellman_ford_less_naive(graph,source):
     pred = [None] * size
     min_dist = [MAX_INT] * size
     closed = [True] * size
-
     min_dist[source] = 0
     closed[source] = False
 

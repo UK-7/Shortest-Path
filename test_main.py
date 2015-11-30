@@ -7,8 +7,7 @@ from algorithms.utilities.plotting import build_size_data,build_connectivity_dat
 from algorithms.floyd_warshall import floyd_warshall_naive
 from algorithms.johnson import johnson
 
-import time
-
+import time,copy
 MAX_INT = 10000
 
 
@@ -17,13 +16,15 @@ graph = [[0,2,MAX_INT,MAX_INT],
          [4,MAX_INT,0,4],
          [MAX_INT,5,MAX_INT,0]] #????
 
-print(johnson(graph))
+
+print(johnson(copy.deepcopy(graph)))
 print('dij')
 print([dijkstra_fib(graph,i)[0] for i in range(4)])
 print('bellman')
+print([bellman_ford_less_naive(graph,i)[0] for i in range(4)])
 print([bellman_ford_naive(graph,i)[0] for i in range(4)])
 print('floyd') 
-print(floyd_warshall_naive(graph))
+print(floyd_warshall_naive(copy.deepcopy(graph)))
 
 
 #print([bellman_ford_less_naive(graph,i)[0] for i in range(len(graph))])
