@@ -9,7 +9,7 @@ def dijkstra_list_naive(graph,source):
     Q = [True] * n_nodes
     
     while sum(Q) != 0:
-        val, u = min((val, idx) if Q[idx] else (MAX_INT,-1) for (idx, val) in enumerate(dist))
+        val, u = min((val, idx) if Q[idx] else (MAX_INT,MAX_INT) for (idx, val) in enumerate(dist))
         Q[u] = False
         
         neighbors = graph[u]

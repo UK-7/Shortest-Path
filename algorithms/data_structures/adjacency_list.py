@@ -10,8 +10,8 @@ def print_list(graph):
 
 
 def build_random_list(m,duplicates = False, low_weight = 1,high_weight = 20,p_edge = .6):
-    graph = dict()
-
+    # graph = dict()
+    graph = [None]*m
     if duplicates:
         for i in range(m):
             graph[i] = []
@@ -36,18 +36,14 @@ def build_random_list(m,duplicates = False, low_weight = 1,high_weight = 20,p_ed
                     graph[source][dest] = randint(low_weight,high_weight)
                 else:
                     source = dest = 0
-    print_list(graph)
     return graph
 
 MAX_INT = 10000
 def matrix_to_list(matrix):
-
     m = len(matrix)
     graph = dict()
     for i in range(m):
         graph[i] = dict()
-
-    
     for i in range(m):
         for j in range(m):
             if matrix[i][j] != MAX_INT and matrix[i][j] != 0:

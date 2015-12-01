@@ -14,7 +14,7 @@ import time,copy
 MAX_INT = 10000
 
 #############################
-# Adjacency lists ###########
+# Adjacency Dijkstra##########
 ##############################
 # graph = build_random_list(25,duplicates = False)
 graph2 = build_random_graph(50)
@@ -23,9 +23,15 @@ list_r = matrix_to_list(graph2)
 print(dijkstra_list_naive(list_r,0))
 print(dijkstra_naive(graph2,0))
 
-
-
-
+print('building BIG MATRIX')
+start = time.time()
+# Testing a HUGE MATRIX
+big_list = build_random_list(250000, duplicates = True, p_edge = 0.03) #.05
+print('built list')
+print('elapsed: {0}'.format(time.time()-start))
+start = time.time()
+#dijkstra_list_naive(big_list,2000)
+print('elapsed: {0}'.format(time.time()-start))
 
 '''
 ################################
