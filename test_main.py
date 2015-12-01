@@ -1,7 +1,10 @@
 from __future__ import print_function,division
 
 from algorithms.data_structures.adjacency_matrix import build_random_graph, print_nice
+from algorithms.data_structures.adjacency_list import build_random_list,matrix_to_list
+
 from algorithms.dijkstra import dijkstra_heap, dijkstra_naive, dijkstra_fib,dijkstra_fastest
+from algorithms.dijkstra_list import dijkstra_list_naive 
 from algorithms.bellman_ford import bellman_ford_naive, bellman_ford_less_naive
 from algorithms.utilities.plotting import build_size_data,build_connectivity_data,basic_plot
 from algorithms.floyd_warshall import floyd_warshall_naive
@@ -13,6 +16,12 @@ MAX_INT = 10000
 #############################
 # Adjacency lists ###########
 ##############################
+# graph = build_random_list(25,duplicates = False)
+graph2 = build_random_graph(50)
+
+list_r = matrix_to_list(graph2)
+print(dijkstra_list_naive(list_r,0))
+print(dijkstra_naive(graph2,0))
 
 
 
