@@ -1,6 +1,7 @@
 package graphtest;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Dijkstra {
 	
@@ -8,6 +9,8 @@ public class Dijkstra {
 	//really server as a method of visualizing what is going on with adjacency
 	//list interactions
 	public static int[] dijkstra(AdjacencyList graph, int source){
+
+		
 		int n_nodes = graph.size;
 		int MAX_INT = 10000;
 		
@@ -49,6 +52,57 @@ public class Dijkstra {
 		}
 		return dist;	
 	}
+	
+	public static int[] dijkstraFib(AdjacencyList graph,int source){
+		// init a Fib Heap
+		FibonacciHeap<Integer> fibHeap = new FibonacciHeap<Integer>();
+		
+		// standard initialization
+		int n_nodes = graph.size;
+		int MAX_INT = 10000;
+		int[] dist = new int[n_nodes];
+		int[] prev = new int[n_nodes];
+		int[] q = new int[n_nodes];
+		//default initializations
+		Arrays.fill(prev, -1);
+		Arrays.fill(dist, MAX_INT);
+		Arrays.fill(q, 1);
+		dist[source] = 0;
+		
+		
+		// This hashtable allows us to find a neighbor node in constant time. 
+		Map<Integer,FibonacciHeap.Entry<Integer>> entries = new HashMap<Integer,FibonacciHeap.Entry<Integer>>();
+		
+		for(int i = 0; i < n_nodes;i++){
+			//for each node enqueue it with a large weight. keep pointers to node so we can
+			//quickly find them in the heap for decrease priority
+			entries.put(i, fibHeap.enqueue(i, (double)dist[i]));
+		}
+		
+		while(fibHeap.size() > 0){
+			//get minimum value and distance
+			int nextNode = fibHeap.dequeueMin().getValue();
+			int distU = dist[nextNode];
+			
+			//get neighbors to the node
+			HashMap<Integer,Integer>neighbors = graph.getNeighbors(nextNode);	
+			for(int neighbor:neighbors.keySet()){
+				
+				//standard dijkstra
+				int alt = distU + neighbors.get(neighbor);
+				if(alt < dist[neighbor]){
+					dist[neighbor] = alt;
+					prev[neighbor] = nextNode;
+					
+					//use our hashmap to find the correct part of the heap and decrement the neighbor
+					//this is soooooooo much better than how we had to do it in python
+					fibHeap.decreaseKey(entries.get(neighbor), alt);
+				}
+			}
+		}
+		return dist;
+	}
+	
 	
 	//helper functions - SOO INEFFICIENT
 	//these functions are the reason why this version of dijkstra isn't used
