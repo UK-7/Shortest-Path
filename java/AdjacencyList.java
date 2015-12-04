@@ -1,7 +1,6 @@
 package graphtest;
 
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectOutputStream;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,9 +15,7 @@ public class AdjacencyList {
 	private int weightMax = 500;
 	private int weightMin = 1;
 	
-	public AdjacencyList(){
-		
-	}
+
 	public AdjacencyList(int nodes, double p_edge, int weightMin,int weightMax){
 		this.weightMax = weightMax;
 		this.weightMin = weightMin;
