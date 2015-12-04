@@ -2,6 +2,7 @@ package graphtest;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 public class Dijkstra {
 	
@@ -9,8 +10,6 @@ public class Dijkstra {
 	//really server as a method of visualizing what is going on with adjacency
 	//list interactions
 	public static int[] dijkstra(AdjacencyList graph, int source){
-
-		
 		int n_nodes = graph.size;
 		int MAX_INT = 10000;
 		
@@ -53,7 +52,7 @@ public class Dijkstra {
 		return dist;	
 	}
 	
-	public static int[] dijkstraFib(AdjacencyList graph,int source){
+	public static int[] dijkstraFib(AdjacencyList graph,int source,int returnPrev){
 		// init a Fib Heap
 		FibonacciHeap<Integer> fibHeap = new FibonacciHeap<Integer>();
 		
@@ -100,6 +99,57 @@ public class Dijkstra {
 				}
 			}
 		}
+		if(returnPrev == 1){
+			return prev;
+		}else{
+			return dist;
+		}
+		
+	}
+	
+	public static int[] dijkstraHeap(AdjacencyList graph,int source){
+		// standard initialization
+		int n_nodes = graph.size;
+		int MAX_INT = 10000;
+		int[] dist = new int[n_nodes];
+		int[] prev = new int[n_nodes];
+		//default initializations
+		Arrays.fill(prev, -1);
+		Arrays.fill(dist, MAX_INT);
+		dist[source] = 0;
+		
+		
+		PriorityQueue<DistanceNode> pq = new PriorityQueue<DistanceNode>();
+		
+		
+		
+		/*
+		 * "Poor Mans Priority Queue" : http://ezekiel.vancouver.wsu.edu/~cs223/lectures/graphs/search/dijkstra/dijkstra.pdf
+		 * 
+		 * Instead of using a priority queue we can build a data structure which sorts on priority first and then
+		 * we sort on element idx. We use the DistanceNode class to implement this type of comparison.
+		 */
+		
+		pq.add(new DistanceNode(dist[source],source));
+		
+		while(pq.size() != 0){
+			DistanceNode next = pq.poll();
+			int v = next.destination;
+			int d = next.cost;
+			if(dist[v] >= d || v == source){
+				for(int w:graph.graph.get(v).keySet()){
+					
+					int temp = dist[v] + graph.graph.get(v).get(w);
+
+					if(temp < dist[w]){
+						//System.out.println(temp);
+						dist[w] = temp;
+						prev[w] = v;
+						pq.add(new DistanceNode(temp,w));
+					}
+				}
+			}
+		}	
 		return dist;
 	}
 	

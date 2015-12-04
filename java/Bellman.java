@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 public class Bellman {
-	public static int[] bellman(AdjacencyList graph, int source){
+	public static int[] bellman(AdjacencyList graph, int source, int returnPrev){
 		int size = graph.size;
 		int[] pred = new int[size];
 		int[] min_dist = new int[size];
@@ -35,7 +35,24 @@ public class Bellman {
 				closed[v] = 1;
 			}
 		}
-		return min_dist;
+		
+		//need to check for negative cycles
+		for(int v = 0;v<size;v++){
+			HashMap<Integer,Integer> neighbors = graph.getNeighbors(v);
+			for(int x:neighbors.keySet()){
+				if(min_dist[x] > min_dist[v] + graph.graph.get(v).get(x)){
+					//oh crap we found a negative cycle
+					return null;
+				}
+			}
+		}
+		
+		if(returnPrev == 1){
+			return pred;
+		}else{
+			return min_dist;
+		}
+		
 	}
 	private static Integer[] openCheck(int arr[]){
 		ArrayList<Integer> opens = new ArrayList<Integer>();

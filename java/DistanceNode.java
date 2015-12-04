@@ -1,7 +1,7 @@
 package graphtest;
 import java.util.*;
 ///
-/// NOT USED EITHER
+/// Used for Dijkstra heap
 //
 
 
@@ -9,9 +9,9 @@ import java.util.*;
 public class DistanceNode implements Comparator<DistanceNode>, Comparable<DistanceNode> {
 	int destination;
 	int cost;
-	public DistanceNode(int icost,int idestination){
-		this.cost = icost;
-		this.destination = idestination;
+	public DistanceNode(int cost,int destination){
+		this.cost = cost;
+		this.destination = destination;
 	}
 	public int compareTo(DistanceNode d){
 		int x = this.cost - d.cost;

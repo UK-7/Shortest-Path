@@ -59,7 +59,10 @@ import java.util.*; // For ArrayList
  * A class representing a Fibonacci heap.
  *
  * @param T The type of elements to store in the heap.
- * @author Keith Schwarz (htiek@cs.stanford.edu)
+ * @author Keith Schwarz (htiek@cs.stanford.edu) <- THIS IS NOT ME! 
+ * @link  http://www.keithschwarz.com/interesting/code/?dir=fibonacci-heap
+ * 
+ * This seems to be the standard impelmentaiton used for dijkstra. Note the implementation of the actual algorithm is mine.
  */
 public final class FibonacciHeap<T> {
     /* In order for all of the Fibonacci heap operations to complete in O(1),
