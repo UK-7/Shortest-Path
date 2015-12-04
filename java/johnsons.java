@@ -3,9 +3,9 @@ package graphtest;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class johnsons {
-	public static int[][] johnsonNaive(AdjacencyList graph){
-		int[][] untouchedGraph = graph.buildMatrix();
+public class Johnsons {
+	public static int[][] johnsonNaive(AdjacencyList graph,int[][] untouchedGraph){
+		//int[][] untouchedGraph = graph.buildMatrix();
 
 		//add node to graph with zero edges to all other nodes in graph
 		HashMap<Integer,Integer> newNode = new HashMap<Integer,Integer>();
@@ -37,6 +37,11 @@ public class johnsons {
 		for(int i = 0;i<graph.size;i++){
 			result[i] = Dijkstra.dijkstraFib(graph, i, 1);
 		}	
+		
+		
+		
+	
+		
 		//okay so now we have all the previous nodes we have to reconstruct the weight.
 		int[][] distances = new int[graph.size][graph.size];
 		for(int[] row:distances){
@@ -66,14 +71,6 @@ public class johnsons {
 				}
 			
 			}
-		}
-		System.out.println("-");
-		for(int[] row:distances){
-			for(int i:row){
-				System.out.print(i);
-				System.out.print(" ");
-			}
-			System.out.println("");
 		}
 		return result;
 	}

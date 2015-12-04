@@ -24,13 +24,11 @@ public class Dijkstra {
 		dist[source] = 0;
 		
 		// this is where fib heap will be great. need decrease priority function
-		int x = sumArray(q);
-		while(x != 0){
-			if(x%10000 == 0){
-				System.out.println(x);
-			}
+		while(!doneYet(q)){
+			//System.out.println(x);
 			//loop until every node has been called as minimum index
 			int u = minIdx(dist,q);
+			//System.out.println(u);
 			//get lowest index
 			q[u] = 0;
 			HashMap<Integer,Integer> neighbors = graph.getNeighbors(u);
@@ -47,7 +45,6 @@ public class Dijkstra {
 					}
 				}
 			}
-			x = sumArray(q);
 		}
 		return dist;	
 	}
@@ -156,18 +153,19 @@ public class Dijkstra {
 	
 	//helper functions - SOO INEFFICIENT
 	//these functions are the reason why this version of dijkstra isn't used
-	public static int sumArray(int[] arr){
-		int sum = 0;
+	public static boolean doneYet(int[] arr){
 		for(int i = 0;i<arr.length;i++){
-			sum+= arr[i];
+			if(arr[i] == 1){
+				return false;
+			}
 		}
-		return sum;
+		return true;
 	}
 	public static int minIdx(int[] dist,int[] q){
 		int lowVal = 10000;
-		int lowIdx = 0;
+		int lowIdx = -1;
 		for(int i =0;i<dist.length;i++){
-			if(dist[i]<lowVal && q[i] == 1){
+			if(dist[i]<=lowVal && q[i] == 1){
 				lowVal = dist[i];
 				lowIdx = i;
 			}

@@ -1,6 +1,6 @@
 package graphtest;
 
-public class floydWarshal {
+public class FloydWarshal {
 	//note this solution REQUIRES adjacency matrix.
 	public static int[][] floydWarshalNaive(int[][] graph){
 		int size = graph.length;

@@ -30,7 +30,7 @@ public class AdjacencyList {
 		//we will need to explore performance based on p_edge for some algorithms
 		double x = (double)nodes * (double)nodes;
 		double edges = x * p_edge;
-		System.out.println(edges);
+		//System.out.println(edges);
 		
 		this.size = nodes;
 		//initialize graph for each source node
@@ -57,8 +57,8 @@ public class AdjacencyList {
 			this.graph.get(source).put(dest, weight);
 
 		}
-		System.out.println(this.graph.get(0));
-		System.out.println("Finishing Graph Build");
+		//System.out.println(this.graph.get(0));
+		//System.out.println("Finishing Graph Build");
 	}
 	
 	public HashMap<Integer,Integer> getNeighbors(int node){
