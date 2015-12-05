@@ -52,5 +52,5 @@ with open('exp2naive_results.csv','rt') as f:
 
 data = ([[fib_means,fib_err],[heap_means,heap_err],[naive_means,naive_err]],x)
 
-basic_plot(['dijkstra fib','dijkstra heap','dijkstra naive'],data,
+basic_plot(['dijkstra fib','dijkstra heap','dijkstra naive(list)'],data,
     'comparison of heap,fibonacci heap and naive run time with graph sizes 10,000 to 100,000 with p_edge = 0.0001','graph size')
