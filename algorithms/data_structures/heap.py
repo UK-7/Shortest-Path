@@ -1,5 +1,9 @@
 from __future__ import print_function, division
+
+
 ##implementing a heap function in python
+##copied with some modifications for dijkstra from here: http://www.cs.toronto.edu/~david/courses/csc148_f14/week9/heap.py
+
 '''
 class Node:
     def __init__(self,data=None):
