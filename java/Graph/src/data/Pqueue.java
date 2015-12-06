@@ -10,6 +10,8 @@ public class Pqueue {
 	public void insert(node N) {
 		queue[size] = N;
 		N.heapIndex = size;
+		System.out.println("size");
+		System.out.println(size);
 		buildHeap(size);
 		size++;
 
@@ -126,6 +128,7 @@ public class Pqueue {
 	}
 
 	public void update(node neighbour) {
+		System.out.println(neighbour.heapIndex);
 		buildHeap(neighbour.heapIndex);
 	}
 }

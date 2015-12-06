@@ -5,7 +5,7 @@ import data.Graph;
 import data.Graph.node;
 
 public class Execute {
-	
+	///can I save it yes
 	/*
 	 * generate a map of x*y with possibility of an 
 	 * edge = connectivity (actual edges upon total possible)
@@ -20,9 +20,13 @@ public class Execute {
 		}
 		for (int i = 0; i < edgeCount; i++) {
 			int a = (int) (Math.random() * x);
+			System.out.println(a);
 			int b = (int) (Math.random() * y);
+			System.out.println(b);
 			int wt = (int) (Math.random() * 50 + 1);
+			System.out.println(wt);
 			int dir = (int) (Math.random() * 4);
+			System.out.println(dir);
 			while(!G.addEdge(a,b,dir,wt)){
 				a = (int) (Math.random() * x);
 				b = (int) (Math.random() * y);
@@ -37,6 +41,7 @@ public class Execute {
 	public static void main(String args[]) {
 		Execute E = new Execute();
 		Graph G = E.generateMap(100, 100, 0.8);
+
 		A_star A = new A_star();
 		A.setGraph(G);
 		A.setTarget(87, 62);

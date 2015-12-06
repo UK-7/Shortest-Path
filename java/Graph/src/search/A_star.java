@@ -1,7 +1,10 @@
 //Jai Sai Ram//
 package search;
+import java.util.PriorityQueue;
+
 import data.*;
 import data.Graph.node;
+
 
 public class A_star {
 	
@@ -23,31 +26,34 @@ public class A_star {
 	 * the Graph structure 'Graph'
 	 */
 	public int astar(int X, int Y) {
-		Pqueue Q = new Pqueue();
 		node start = G.Map[X][Y];
 		int currentCost = 0;
-		
-		Q.insert(start);
+		PriorityQueue<node> Q = new PriorityQueue<node>();
+		Q.add(start);
 		start.curCost = 0;
-		node current = Q.getMin();
-
-		while(Q.size != 0) {
-			current = Q.getMin();
+		node current = start;
+		while(Q.size() != 0) {
+			System.out.println(Q.size());
+			current = Q.poll();
 			if (current.equals(target))
 				return target.cost;
 			
 			for(int i = 0; i < 4; i++) {
 				node neighbour = neighbour(current, i);
-				if( neighbour != null && currentCost + current.edge[i] > neighbour.curCost) {
+				if (neighbour != null && current.edge[i] != 2147483647){
+				//System.out.println(neighbour);
+				System.out.println(currentCost+current.edge[i]);
+				System.out.println(neighbour.curCost);
+				if(currentCost + current.edge[i] < neighbour.curCost) {
 					neighbour.curCost = currentCost + current.edge[i];
 					neighbour.cost = neighbour.curCost + heuristic(neighbour.x, neighbour.y);
-					if(neighbour.discovered)
-						Q.update(neighbour);
-					else
-						Q.insert(neighbour);
-				}	
+					
+					}
+				Q.add(neighbour);
+				}
+				
 			}
-		}
+			}
 		return -1;
 	}
 	

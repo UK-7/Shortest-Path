@@ -1,5 +1,8 @@
 package data;
 
+import java.util.Comparator;
+
+
 /*
  * Data Structure for storing the graph that will be
  * processed by the A* algorithm. 
@@ -23,7 +26,7 @@ public node Map[][];
 		Map = new node[x][y];
 	}
 	
-	public class node {
+	public class node implements Comparator<node>, Comparable<node>{
 		
 		node parent = null;
 		public int x;
@@ -37,6 +40,13 @@ public node Map[][];
 		public int curCost = 0; //Actual cost of reach the node
 		public int estCost = 0; //Heuristic cost
 		public int cost = estCost + curCost;
+		public int compareTo(node o) {
+			return this.cost - o.cost;
+
+		}
+		public int compare(node o1, node o2) {
+			return o1.cost - o2.cost;
+		}
 	}
 	
 	
