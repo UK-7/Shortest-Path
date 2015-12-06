@@ -128,7 +128,7 @@ public class Pqueue {
 	}
 
 	public void update(node neighbour) {
-		//System.out.println(neighbour.heapIndex);
+		System.out.println(neighbour.heapIndex);
 		buildHeap(neighbour.heapIndex);
 	}
 }

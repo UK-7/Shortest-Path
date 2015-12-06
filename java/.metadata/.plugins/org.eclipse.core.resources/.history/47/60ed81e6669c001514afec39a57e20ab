@@ -12,14 +12,14 @@ public class Execute {
 	 */
 	private Graph generateMap(int x, int y, double connectivity) {
 		Graph G = new Graph(x,y);
-		int edgeCount = (int) (((2*x*y) - (x + y))*connectivity);
+		int edgeCount = (int) ((2*x*y -x -y)*connectivity);
 		
 		for(int i = 0; i < x; i++) {
 			for(int j = 0; j < y; j++)
 				G.Map[i][j] = G.new node();
 		}
 		
-		for (int i = 0; i < 2*edgeCount; i++) {
+		for (int i = 0; i < edgeCount; i++) {
 			int a = (int) (Math.random() * x);
 			int b = (int) (Math.random() * y);
 			int wt = (int) (Math.random() * 50 + 1);
@@ -37,8 +37,7 @@ public class Execute {
 			System.out.println(a + ", " + b + ": " + dir +  " ->" + wt);
 		}
 		
-		System.out.println(edgeCount);
-		//System.out.println(G.Map[0][0].edge[0] + " " + G.Map[0][0].edge[1] + " " + G.Map[0][0].edge[2] + " " +G.Map[0][0].edge[3]);
+		System.out.println(G.Map[0][0].edge[0] + " " + G.Map[0][0].edge[1] + " " + G.Map[0][0].edge[2] + " " +G.Map[0][0].edge[3]);
 		
 		return G;
 	}

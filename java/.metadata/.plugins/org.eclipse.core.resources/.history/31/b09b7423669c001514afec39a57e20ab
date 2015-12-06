@@ -51,13 +51,11 @@ public node Map[][];
 	
 	
 	public boolean addEdge(int x, int y, int dir, int weight) {
-		
-		if(Map[x][y].edge[dir] == Integer.MAX_VALUE) {
+		if(Map[x][y].edge[dir] != Integer.MAX_VALUE)
+			return false;
+		else
 			Map[x][y].edge[dir] = weight;
-			return true;
-		}
-			
-		return false;
+		return true;
 	}
 	
 }

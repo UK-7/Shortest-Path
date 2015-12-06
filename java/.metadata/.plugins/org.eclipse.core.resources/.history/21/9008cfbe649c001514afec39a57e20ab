@@ -39,7 +39,7 @@ public node Map[][];
 		
 		public int curCost = Integer.MAX_VALUE; //Actual cost of reach the node
 		public int estCost = Integer.MAX_VALUE; //Heuristic cost
-		public int cost = Integer.MAX_VALUE;
+		public int cost = estCost + curCost;
 		public int compareTo(node o) {
 			return this.cost - o.cost;
 
@@ -51,13 +51,11 @@ public node Map[][];
 	
 	
 	public boolean addEdge(int x, int y, int dir, int weight) {
-		
-		if(Map[x][y].edge[dir] == Integer.MAX_VALUE) {
+		if(Map[x][y].edge[dir] != Integer.MAX_VALUE)
+			return false;
+		else
 			Map[x][y].edge[dir] = weight;
-			return true;
-		}
-			
-		return false;
+		return true;
 	}
 	
 }

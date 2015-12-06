@@ -27,34 +27,33 @@ public class A_star {
 	 */
 	public int astar(int X, int Y) {
 		node start = G.Map[X][Y];
-		start.curCost = 0;
-		
 		int currentCost = 0;
-		
 		PriorityQueue<node> Q = new PriorityQueue<node>();
 		Q.add(start);
-
-		node current;
+		start.curCost = 0;
+		node current = start;
 		while(Q.size() != 0) {
 			//System.out.println(Q.size());
 			current = Q.poll();
-			currentCost = current.curCost;
 			if (current.equals(target))
-				return target.curCost;
+				return target.cost;
 			
 			for(int i = 0; i < 4; i++) {
 				node neighbour = neighbour(current, i);
-				if (neighbour != null && currentCost + current.edge[i] < neighbour.curCost){
+				if (neighbour != null && current.edge[i] != 2147483647){
 				//System.out.println(neighbour);
 				//System.out.println(currentCost+current.edge[i]);
 				//System.out.println(neighbour.curCost);
-				neighbour.curCost = currentCost + current.edge[i];
-				neighbour.cost = neighbour.curCost + heuristic(neighbour.x, neighbour.y);
+				if(currentCost + current.edge[i] < neighbour.curCost) {
+					neighbour.curCost = currentCost + current.edge[i];
+					neighbour.cost = neighbour.curCost + heuristic(neighbour.x, neighbour.y);
+					
+					}
 				Q.add(neighbour);
 				}	
 			}
 		}
-		return -1;
+		return currentCost;
 	}
 	
 	/*

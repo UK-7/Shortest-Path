@@ -27,14 +27,11 @@ public class A_star {
 	 */
 	public int astar(int X, int Y) {
 		node start = G.Map[X][Y];
-		start.curCost = 0;
-		
 		int currentCost = 0;
-		
 		PriorityQueue<node> Q = new PriorityQueue<node>();
 		Q.add(start);
-
-		node current;
+		start.curCost = 0;
+		node current = start;
 		while(Q.size() != 0) {
 			//System.out.println(Q.size());
 			current = Q.poll();
