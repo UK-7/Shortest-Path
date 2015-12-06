@@ -8,68 +8,140 @@ import java.util.Arrays;
 
 public class Main {
 	public static void main(String[] args) {
+			
+		StarGraph g1 = new StarGraph(24);
+		g1.printGraph();
+		
+		
+		/* Toy Example for Demonstration 
+		 * 
+		 * We look at a 25 node graph with
+		 * 25*25*0.6 = 375 edges
+		 * with min weight = 1
+		 * and max weight = 543
+		 * 
+		 * 
+		 * 
+		 * */
 		/*
-		 *  //25,000 nodes
-		 *  //625,000 edges
+		AdjacencyList graph = new AdjacencyList(25,0.6,1,543);
+		for(int key:graph.graph.keySet()){
+			System.out.print(key);
+			System.out.print("-->");
+			System.out.print(graph.graph.get(key));
+			System.out.println("");
+		}
+		int[][] singles = new int[25][25];
+		for(int source = 0;source<25;source++){
+			int[] test1 = Dijkstra.dijkstra(graph, source);
+			int[] test2 = Dijkstra.dijkstraFib(graph, source, 0);
+			int[] test3 = Dijkstra.dijkstraHeap(graph, source);
+			int[] test4 = Bellman.bellman(graph, source, 0);
+			int[] test5 = Bellman.bellman_naive(graph, source);
+			
+			boolean correct = Arrays.equals(test1, test2) && Arrays.equals(test2, test3) 
+			&& Arrays.equals(test3, test4) && Arrays.equals(test4, test5);
+			singles[source] = test1;
+			System.out.println(correct);
+		}
+		int[][] test2 = FloydWarshal.floydWarshalNaive(graph.buildMatrix());
+		int[][] test1 = Johnsons.johnsonNaive(graph, graph.buildMatrix());
+		
+		//johnsons should be run last. does not keep graph data structure intact
+		
+		for(int i = 0;i<25;i++){
+			System.out.println(Arrays.equals(singles[i],test2[i]) && Arrays.equals(test1[i], test2[i]));
+		}
+		for(int i = 0;i<25;i++){
+			for(int j = 0;j<25;j++){
+				System.out.print(singles[i][j]);
+				System.out.print(" ");
+			}
+			System.out.println("");
+		}
+
 		*/
 		
-		ArrayList<ArrayList<Long>> floyd = new ArrayList<ArrayList<Long>>();
-		ArrayList<ArrayList<Long>> johnson = new ArrayList<ArrayList<Long>>();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
+		//int nodes = 2000;
+		/*
+		for(int i = 0;i<25;i++){
+			AdjacencyList graph = new AdjacencyList(10000,.01);
+			System.out.println("test");
+		}
+		 //make sure we can reliably generate graphs of size n with p_edge x for experiments
+		*/
+		
+		
+		/*
+		 * 
+		 * 		
+		ArrayList<ArrayList<Long>> bellman = new ArrayList<ArrayList<Long>>();
+		ArrayList<ArrayList<Long>> bellmanNaive = new ArrayList<ArrayList<Long>>();
 		long startTime;
 		long endTime;
 		long duration;
-		
-		//int nodes = 2000;
-		
-		
-		for(int i = 0;i<25;i++){
-			AdjacencyList graph = new AdjacencyList(5000,.1);
-			System.out.println("test");
-		}
-		
-		//4,000 to 400,000 thousand edges by
-		
-		// try absolutely fixing edges
-		//double p_edge = .1;
-		
-		double p_edge = .001;
-		for(int nodes = 5; nodes < 4000;nodes = nodes + 1000){
-			System.out.println(p_edge);
-			ArrayList<Long> floydIterations = new ArrayList<Long>();
-			ArrayList<Long> johnsonIterations = new ArrayList<Long>();
+		double p_edge = .01;
+		for(int nodes = 1000; nodes < 10000;nodes = nodes + 1000){
+			ArrayList<Long> bellmanIteration = new ArrayList<Long>();
+			ArrayList<Long> bellmanNaiveIteration = new ArrayList<Long>();
 			for(int rep = 0; rep < 5; rep++){
-				AdjacencyList graph = new AdjacencyList(nodes, p_edge);
-				int[][] graphMat = graph.buildMatrix();
+				AdjacencyList graph = new AdjacencyList(nodes, p_edge,-10,1000);
 				System.out.println(rep);
+				
 				startTime = System.nanoTime();
-				int[][] test1 = FloydWarshal.floydWarshalNaive(graphMat);
+				int[] test1 = Bellman.bellman_naive(graph, 98);
 				endTime = System.nanoTime();
 				duration = (endTime - startTime) / 1000000;
-				floydIterations.add(duration);
+				
+				bellmanNaiveIteration.add(duration);
 				//System.out.println("floyd done");
 				
 				startTime = System.nanoTime();
-				int[][] test3 = Johnsons.johnsonNaive(graph,graphMat);
+				int[] test3 = Bellman.bellman(graph, 98, 0);
 				endTime = System.nanoTime();
 				duration = (endTime - startTime) / 1000000;
-				johnsonIterations.add(duration);
+				
+				if(test1 == null && test3 == null){
+					System.out.println("negative cycle");
+				}
+				if(!Arrays.equals(test1,test3)){
+					System.out.println("invalid");
+				}
+				bellmanIteration.add(duration);
 			}
-			johnson.add(johnsonIterations);
-			floyd.add(floydIterations);	
+			bellman.add(bellmanIteration);
+			bellmanNaive.add(bellmanNaiveIteration);	
 		}
 		
 		
 		//write results to file
 		try {
-			PrintWriter writer = new PrintWriter("/Users/jgiesler/Desktop/exp6bjohnson_results.csv","UTF-8");
-			for(ArrayList<Long> arr:johnson){
+			PrintWriter writer = new PrintWriter("/Users/jgiesler/Desktop/exp2bbellman_results.csv","UTF-8");
+			for(ArrayList<Long> arr:bellman){
 				writer.println(arr.toString().replace("[", "").replace("]", "")
 			            .replace(", ", ","));
 			}
 			writer.close();
 			
-			writer = new PrintWriter("/Users/jgiesler/Desktop/exp6bfloyd_results.csv","UTF-8");
-			for(ArrayList<Long> arr:floyd){
+			writer = new PrintWriter("/Users/jgiesler/Desktop/exp2bnaivebellman_results.csv","UTF-8");
+			for(ArrayList<Long> arr:bellmanNaive){
 				writer.println(arr.toString().replace("[", "").replace("]", "")
 			            .replace(", ", ","));
 			}
@@ -81,6 +153,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		
+		*/
 		/*
 		 * Old Test Cases
 		 * -Building a random graph
@@ -228,7 +301,8 @@ public class Main {
 		}
 		
 		//4,000 to 400,000 thousand edges by
-		for(double p_edge = .0005 ; p_edge < .01;p_edge = p_edge + .0005){
+		double p_edge = .001;
+		for(int nodes = 5; nodes < 4000;nodes = nodes + 1000){
 			System.out.println(p_edge);
 			ArrayList<Long> floydIterations = new ArrayList<Long>();
 			ArrayList<Long> johnsonIterations = new ArrayList<Long>();
@@ -237,14 +311,14 @@ public class Main {
 				int[][] graphMat = graph.buildMatrix();
 				System.out.println(rep);
 				startTime = System.nanoTime();
-				int[][] test1 = floydWarshal.floydWarshalNaive(graphMat);
+				int[][] test1 = FloydWarshal.floydWarshalNaive(graphMat);
 				endTime = System.nanoTime();
 				duration = (endTime - startTime) / 1000000;
 				floydIterations.add(duration);
 				//System.out.println("floyd done");
 				
 				startTime = System.nanoTime();
-				int[][] test3 = johnsons.johnsonNaive(graph,graphMat);
+				int[][] test3 = Johnsons.johnsonNaive(graph,graphMat);
 				endTime = System.nanoTime();
 				duration = (endTime - startTime) / 1000000;
 				johnsonIterations.add(duration);
@@ -252,6 +326,7 @@ public class Main {
 			johnson.add(johnsonIterations);
 			floyd.add(floydIterations);	
 		}
+		
 		 */
 	}
 
