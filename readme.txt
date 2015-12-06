@@ -5,38 +5,24 @@ Written in Python 2.7
 Implemented:
 	Utilities:
 	- Basic Timing Functions
-	- Plotting Libraries
+	- Plotting Libraries:
+	- Lots of Test Cases
+	- Graphing Library for all-pairs shortest paths
 	
 	Data Structures:
 	- Generation of Random Adjacency Matrix
 	- Heap
 	
 	Algorithms: 
-	- Dijkstra (list and heap)
+	- All algorithms in Java
+	- Dijkstra (list and heap and fib)
 	- Bellman Ford (most naive)
 	- Bellman Ford (less naive - only look at relaxed nodes)
 	- Floyd-Warshal (most naive)
 	- Johnsons
 
 To Implement:
-	- Algorithms with Adjacency Lists instead of Matricies
-	Algorithms:
 	- A*
-	
-	Utilities:
-	- Lots of Test Cases
-	- Graphing Library for all-pairs shortest paths
-
-Work Distribution:
- - TBA
-
-Jason Currently working on:
-- Improving heap dijkstra (right now it is slower than the standard implementation)
-
-Utkarsh currently working on:
-- Learning python :)
-
-
 
 
 Required packages: 

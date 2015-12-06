@@ -70,6 +70,8 @@ public class AdjacencyList {
 		if(this.size > 30000){
 			//add case here complaining about memory usage
 			//with 6gb of a heap we run into issues greater than 30,000nodes
+			System.out.println("too big of matrix for memory");
+			return null;
 		}
 		
 		int[][] bigMatrix = new int[size][size];
