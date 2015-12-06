@@ -1,0 +1,29 @@
+package search;
+import data.*;
+
+public class A_star {
+	int[] target;
+	Graph G;
+	
+	//Expected by the execution method
+	public void setGraph(Graph G) {
+		this.G = G;
+	}
+	
+	/*
+	 * A* search algorithm that takes as input
+	 * x and y variable of the start node int
+	 * Graph structure 'Graph'
+	 */
+	public int astar(int X, int Y) {
+		Pqueue Q = new Pqueue();
+		Q.insert(G.Graph[X][Y]);
+		
+		return 0;
+	}
+	
+	private int heuristic(int x, int y) {
+		//Manhattan distance between current and target
+		return (target[0] - x) + (target[1] - y);
+	}
+}

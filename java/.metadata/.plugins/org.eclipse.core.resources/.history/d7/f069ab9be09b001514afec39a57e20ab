@@ -1,0 +1,45 @@
+package search;
+import data.*;
+import data.Graph.node;
+
+public class A_star {
+	
+	Graph G;
+	node target;
+	
+	//Expected by the execution method
+	public void setGraph(Graph G) {
+		this.G = G;
+	}
+	
+	public void setTarget(int x, int y) {
+		target = G.Map[x][y];
+	}
+	/*
+	 * A* search algorithm that takes as input
+	 * x and y variable of the start node in
+	 * the Graph structure 'Graph'
+	 */
+	public int astar(int X, int Y) {
+		Pqueue Q = new Pqueue();
+		node start = G.Map[X][Y];
+		int currentCost = 0;
+		
+		Q.insert(start);
+		start.curCost = 0;
+		node current;
+
+		while(Q.size != 0) {
+			current = Q.getMin();
+			if (current.equals(target))
+				return target.cost;
+			
+		}
+		return 0;
+	}
+	
+	private int heuristic(int x, int y) {
+		//Manhattan distance between current and target
+		return (target.x - x) + (target.y - y);
+	}
+}

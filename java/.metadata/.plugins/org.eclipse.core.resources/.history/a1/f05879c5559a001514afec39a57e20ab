@@ -1,0 +1,45 @@
+package data;
+
+/*
+ * Data Structure for storing the graph that will be
+ * processed by the A* algorithm. 
+ * 
+ * This is and adjacency list representation of the graph.
+ * The Graph[m][n] serves the purpose of the list.
+ * This makes referencing individual nodes more efficient.
+ * 
+ * sub class edge is the element of the adjacency list for
+ * each node
+ * 
+ * the dimensions of the graph must be specified at the
+ * point of creation
+ * 
+ * Author: Utkarsh Khanna
+ */
+public class Graph {
+	
+	int xdim, ydim;
+	public Graph(int x, int y) {
+		xdim = x;
+		ydim = y;
+	}
+	
+	class node {
+		int top = Integer.MAX_VALUE;
+		int down = Integer.MAX_VALUE;
+		int left = Integer.MAX_VALUE;
+		int right = Integer.MAX_VALUE;
+		int cost = 0;
+	}
+	
+	node Graph[][] = new node[xdim][ydim];
+	
+	public void addEdge(int x1, int y1, int x2, int y2, int weight) {
+		edge newEdge = new edge();
+		newEdge.x = x2;
+		newEdge.y = y2;
+		newEdge.weight = weight;
+		edge next = Graph[x1][y1];
+		Graph[x1][y1] = newEdge;
+	}
+}

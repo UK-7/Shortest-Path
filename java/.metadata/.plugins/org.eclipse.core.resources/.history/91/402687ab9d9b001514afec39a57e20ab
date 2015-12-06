@@ -1,0 +1,13 @@
+package search;
+import data.*;
+
+public class A_star {
+	int[] target;
+	
+	
+	
+	private int heuristic(int x, int y) {
+		//Manhattan distance between current and target
+		return (target[0] - x) + (target[1] - y);
+	}
+}
