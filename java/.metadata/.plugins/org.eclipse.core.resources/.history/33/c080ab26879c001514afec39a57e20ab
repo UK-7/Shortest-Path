@@ -5,6 +5,12 @@ import data.Graph;
 import data.StarGraph;
 
 public class Execute {
+	///can I save it yes
+	/*
+	 * generate a map of x*y with possibility of an 
+	 * edge = connectivity (actual edges upon total possible)
+	 * 0 < connectivity <= 1.0
+	 */
 	
 	public static void main(String args[]) {
 		StarGraph G = new StarGraph(50);
@@ -13,6 +19,8 @@ public class Execute {
 		A.setGraph(G);
 		A.setTarget(43, 19);
 		System.out.println(A.astar(0, 0));
+		
+		//printGraph(G);
 	}
 
 	@SuppressWarnings("unused")
