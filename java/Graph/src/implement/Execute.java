@@ -19,6 +19,7 @@ public class Execute {
 		A.setGraph(G);
 		A.setTarget(43, 19);
 		System.out.println(A.astar(0, 0));
+		
 		//printGraph(G);
 	}
 

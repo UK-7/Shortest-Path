@@ -33,36 +33,64 @@ public class A_star {
 		
 		PriorityQueue<StarGraphNode> Q = new PriorityQueue<StarGraphNode>();
 		Q.add(start);
-
+		//System.out.println(start.toString());
+		
 		StarGraphNode current;
 		while(Q.size() != 0) {
 			//System.out.println(Q.size());
 			current = Q.poll();
+			//System.out.println(current.toString());
+			//System.out.println(Q.size());
 			currentCost = current.curCost;
 			if (current.equals(target))
 				return target.curCost;
-			
+			for(int test:current.edge){
+				//System.out.println("x");
+				//System.out.println(test);
+			}
 			for(int i = 0; i < 4; i++) {
-				StarGraphNode neighbour = neighbour(current, i);
-				if (neighbour != null && currentCost + current.edge[i] < neighbour.curCost){
-				//System.out.println(neighbour);
-				//System.out.println(currentCost+current.edge[i]);
-				//System.out.println(neighbour.curCost);
-				neighbour.curCost = currentCost + current.edge[i];
-				neighbour.cost = neighbour.curCost + heuristic(neighbour.x, neighbour.y);
-				Q.add(neighbour);
-				}	
+				StarGraphNode neighbour = null;
+				if(current.edge[i] != Integer.MAX_VALUE){
+					//System.out.println(current.edge[i]);
+					if(i == 0){
+						//System.out.println("left");
+						neighbour = G.Map[current.x-1][current.y];
+					}else if(i == 1){
+						//System.out.println("up");
+						 neighbour = G.Map[current.x][current.y-1];
+					}else if(i == 3){
+						//System.out.println("right");
+						neighbour = G.Map[current.x+1][current.y];
+					}else{
+						//System.out.println("down");
+						neighbour = G.Map[current.x][current.y+1];
+					}
+					
+			
+				//System.out.println(neighbour.toString());
+				if (currentCost + current.edge[i] < neighbour.curCost){
+					//System.out.println(neighbour.toString());
+						//System.out.println(neighbour);
+					//System.out.println(currentCost+current.edge[i]);
+					//System.out.println(neighbour.curCost);
+					neighbour.curCost = currentCost + current.edge[i];
+					neighbour.cost = neighbour.curCost + heuristic(neighbour.x, neighbour.y);
+					Q.add(neighbour);
+				} else{
+					//System.out.println(currentCost+current.edge[i]);
+					//System.out.println(neighbour.curCost);
+				}
+			}
 			}
 		}
 		return -1;
 	}
 	
-	/*
-	 * i = 0 -> Top
-	 * i = 1 -> Left
-	 * i = 2 -> Right
-	 * i = 3 -> Down
-	 */
+	//2 is down
+	//3 is right
+	//1 is up
+	//0 left
+	
 	private StarGraphNode neighbour(StarGraphNode current, int i) {
 		if(i == 0) {
 			if(target.y-1 < 0)

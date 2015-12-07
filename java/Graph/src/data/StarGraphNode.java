@@ -1,4 +1,4 @@
-package data;
+ package data;
 
 import java.util.Comparator;
 import java.util.concurrent.ThreadLocalRandom;
@@ -40,7 +40,7 @@ public class StarGraphNode implements Comparator<StarGraphNode>, Comparable<Star
 			this.edge[1] = ThreadLocalRandom.current().nextInt(1,50);
 		}else if(x == 0){
 			//left weight, right weight, down weight
-			this.edge[0] = ThreadLocalRandom.current().nextInt(1,50);
+			this.edge[1] = ThreadLocalRandom.current().nextInt(1,50);
 			this.edge[3] = ThreadLocalRandom.current().nextInt(1,50);
 			this.edge[2] = ThreadLocalRandom.current().nextInt(1,50);
 		}else if(x == this.totalSize){
@@ -65,7 +65,10 @@ public class StarGraphNode implements Comparator<StarGraphNode>, Comparable<Star
 			this.edge[1] = ThreadLocalRandom.current().nextInt(1,50);
 			
 		}
-		
+		//2 is down
+		//3 is right
+		//1 is up
+		//0 left
 	}
 	
 	public int compareTo(StarGraphNode o) {
