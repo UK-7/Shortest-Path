@@ -3,16 +3,16 @@ package search;
 import java.util.PriorityQueue;
 
 import data.*;
-//import data.Graph.node;
+import data.Graph.node;
 
 
 public class A_star {
 	
-	StarGraph G;
-	StarGraphNode target;
+	Graph G;
+	node target;
 	
 	//Expected by the execution method
-	public void setGraph(StarGraph G) {
+	public void setGraph(Graph G) {
 		this.G = G;
 	}
 	
@@ -26,15 +26,15 @@ public class A_star {
 	 * the Graph structure 'Graph'
 	 */
 	public int astar(int X, int Y) {
-		StarGraphNode start = G.Map[X][Y];
+		node start = G.Map[X][Y];
 		start.curCost = 0;
 		
 		int currentCost = 0;
 		
-		PriorityQueue<StarGraphNode> Q = new PriorityQueue<StarGraphNode>();
+		PriorityQueue<node> Q = new PriorityQueue<node>();
 		Q.add(start);
 
-		StarGraphNode current;
+		node current;
 		while(Q.size() != 0) {
 			//System.out.println(Q.size());
 			current = Q.poll();
@@ -43,7 +43,7 @@ public class A_star {
 				return target.curCost;
 			
 			for(int i = 0; i < 4; i++) {
-				StarGraphNode neighbour = neighbour(current, i);
+				node neighbour = neighbour(current, i);
 				if (neighbour != null && currentCost + current.edge[i] < neighbour.curCost){
 				//System.out.println(neighbour);
 				//System.out.println(currentCost+current.edge[i]);
@@ -63,7 +63,7 @@ public class A_star {
 	 * i = 2 -> Right
 	 * i = 3 -> Down
 	 */
-	private StarGraphNode neighbour(StarGraphNode current, int i) {
+	private node neighbour(node current, int i) {
 		if(i == 0) {
 			if(target.y-1 < 0)
 				return null;

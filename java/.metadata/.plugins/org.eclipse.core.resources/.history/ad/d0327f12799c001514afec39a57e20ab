@@ -1,9 +1,9 @@
-package graphtest;
+package data;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 public class StarGraphNode {
-	Integer MAX_Integer = 10000;
+	Integer MAX_Integer = Integer.MAX_VALUE;
 	public Integer upWeight = MAX_Integer;
 	public Integer downWeight = MAX_Integer;
 	public Integer leftWeight = MAX_Integer;
@@ -13,6 +13,8 @@ public class StarGraphNode {
 	private Integer minWeight = 1;
 	public Integer x;
 	public Integer y;
+	public int curCost = Integer.MAX_VALUE;
+	public int cost = Integer.MAX_VALUE;
 	// x ->
 	// ^
  	// |

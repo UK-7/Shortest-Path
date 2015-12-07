@@ -13,6 +13,7 @@ public class Execute {
 	 */
 	
 	public static void main(String args[]) {
+		Execute E = new Execute();
 		StarGraph G = new StarGraph(50);
 
 		A_star A = new A_star();
@@ -22,7 +23,6 @@ public class Execute {
 		//printGraph(G);
 	}
 
-	@SuppressWarnings("unused")
 	private static void printGraph(Graph G) {
 		int rows = G.Map.length;
         int columns = G.Map[0].length;
